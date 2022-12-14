@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,7 @@ class AdminController extends Controller
 
         return view('admin.cekTransaksi', [
             'title' => 'Cek Transaksi',
-            'data' => Transaksi::with('game')->where('email', $ref_email)->orWhere('reference', $ref_email)->get()
+            'data' => Transaksi::where('customer_email', $ref_email)->orWhere('reference', $ref_email)->get()
         ]);
     }
 
@@ -36,6 +35,13 @@ class AdminController extends Controller
         return view('admin.cekTransaksi', [
             'title' => 'Riwayat Transaksi',
             'data' => Transaksi::with('game')->where('email', $email)->get()
+        ]);
+    }
+
+    public function kategoriAdd()
+    {
+        return view('admin.dashboard', [
+            'title' => 'Admin | Kategori'
         ]);
     }
 }

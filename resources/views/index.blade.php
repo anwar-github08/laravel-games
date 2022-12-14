@@ -41,7 +41,7 @@
                     <input type="hidden" name="kategori" value="{{ $kategori->kategori }}">
                     <button class="bg-transparent text-center border-0">
                         <div class="img-item">
-                            <img src="/img/kategori/{{ $kategori->kategori_img }}">
+                            <img src="/storage/kategori/{{ $kategori->kategori_img }}">
                         </div>
                         <div class="desc-item">
                             {{ $kategori->kategori }}

@@ -61,7 +61,11 @@ hasil detail transaksi
 
 
 
-email dinamis
-buat form untuk cek transaksi (email atau no reference)
+-- email dinamis
+-- buat form untuk cek transaksi (email atau no reference)
+-- pada saat cekout dengan email formatnya kok salah cek di halaman game
+-- kurang back pada komponen transaksi
+-- untuk admin,,bisa tambah kategori dinamis => kurang ketika hapus di komponen kategoris harus bisa update komponen kategori-create
+-- error di ewallet
 
-pada saat cekout dengan email formatnya kok salah cek di halaman game
+input hasil transaksi atau checkout bisa disimpan(kurang rincian transaksi)

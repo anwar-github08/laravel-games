@@ -30,13 +30,13 @@
                         <a href="/daftarHarga">DAFTAR HARGA</a>
                     </div>
                     <div class="canvas-item">
-                        <a href="">TEST 1</a>
+                        <a href="/kategori">TAMBAH KATEGORI</a>
                     </div>
                     <div class="canvas-item">
-                        <a href="">TEST 1</a>
+                        <a href="/cekTransaksi">CEK TRANSAKSI</a>
                     </div>
                     <div class="canvas-item">
-                        <a href="">TEST 1</a>
+                        <a href="/">HOME</a>
                     </div>
                 </div>
             </div>

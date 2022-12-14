@@ -16,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('email');
-            $table->foreignId('game_id');
             $table->string('reference');
             $table->string('merchant_ref');
-            $table->string('channel');
+            $table->string('payment_name');
+            $table->string('customer_name');
+            $table->string('customer_email');
             $table->integer('amount');
+            $table->string('checkout_url');
             $table->string('status')->default('unpaid');
             $table->timestamps();
         });

@@ -29,13 +29,20 @@ use App\Http\Livewire\ShowProduk;
 
 
 Route::get('/', [DigiflazzController::class, 'getKategori']);
-Route::post('/produk', [DigiflazzController::class, 'getProduk']);
+Route::post('/produk', [ShowProduk::class, 'mount']);
+
+// Admin
+Route::get('/kategori', [AdminController::class, 'kategoriAdd']);
 
 
+// // topup / transaksi
+// Route::post('/topup', [DigiflazzController::class, 'topUp']);
+// Route::get('/topup', [DigiflazzController::class, 'pulsa']);
 
 
 // // request transaksi
 // Route::post('/transaksi', [TransaksiController::class, 'store']);
+
 // // menampilkan data transaksi
 // Route::get('/transaksi/{reference}', [TransaksiController::class, 'show'])->name('transaksi.show');
 
@@ -43,11 +50,11 @@ Route::post('/produk', [DigiflazzController::class, 'getProduk']);
 // // admin
 // Route::get('/admin', [AdminController::class, 'index']);
 
-// // cekTransaksi
-// Route::get('/cekTransaksi', function () {
-//    return view('admin.cekTransaksi', ['title' => 'Cek Transaksi']);
-// });
-// Route::post('/cekTransaksi', [AdminController::class, 'show']);
+// cekTransaksi
+Route::get('/cekTransaksi', function () {
+   return view('admin.cekTransaksi', ['title' => 'Cek Transaksi']);
+});
+Route::post('/cekTransaksi', [AdminController::class, 'show']);
 
 // // riwayat transaksi
 // Route::get('/riwayatTransaksi', [AdminController::class, 'riwayatTransaksi'])->middleware('auth');

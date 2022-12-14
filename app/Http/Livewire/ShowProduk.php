@@ -9,21 +9,38 @@ use App\Http\Controllers\DigiflazzController;
 class ShowProduk extends Component
 {
     public $kategori;
-    public $allProduks;
+    public $produks;
     public $brands;
     public $produkBrands;
 
     public $brandSelect;
 
+    public $changeBrand = false;
+
+    // listeners untuk menangkap emit
+    public function getListeners()
+    {
+        return [
+            // emit dari transaksi
+            'eBack'
+
+        ];
+    }
+    public function eBack($kategori)
+    {
+
+        $this->kategori = $kategori;
+    }
     public function mount(Request $kategori)
     {
         $this->kategori = $kategori->kategori;
 
+        // get produk sesuai kategori
         $digiflazz = new DigiflazzController;
-        $this->allProduks = $digiflazz->daftarHarga($this->kategori);
+        $this->produks = $digiflazz->daftarHarga($this->kategori);
 
         // ambil brand yang duplicate atau ambil nama brand saja
-        foreach ($this->allProduks as $key) {
+        foreach ($this->produks as $key) {
             $this->brands[] = $key->brand;
         }
         $this->brands = array_unique($this->brands);
@@ -31,7 +48,8 @@ class ShowProduk extends Component
         // isi brandSelect dengan array pertama
         $this->brandSelect = array_values($this->brands)[0];
 
-        $this->produkBrands = array_filter($this->allProduks, fn ($item) =>
+        // get produk sesuai brand
+        $this->produkBrands = array_filter($this->produks, fn ($item) =>
         $item->brand == $this->brandSelect);
 
         return view('produk', ['title' => $this->kategori]);
@@ -42,14 +60,15 @@ class ShowProduk extends Component
         return view('livewire.show-produk');
     }
 
-
     public function changeBrand($brand)
     {
         $this->brandSelect = $brand;
-    }
 
-    public function hydrateFoo($brand)
-    {
-        $this->brandSelect = $brand;
+        // get produk sesuai brand
+        $this->produkBrands = array_filter($this->produks, fn ($item) =>
+        $item['brand'] == $brand);
+
+        // change property changeBrand untuk mentrigger foreach tabel yang ada di komponen
+        $this->changeBrand = true;
     }
 }

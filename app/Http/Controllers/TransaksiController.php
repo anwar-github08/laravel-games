@@ -33,8 +33,9 @@ class TransaksiController extends Controller
     {
 
         // Request transaksi ke tripay
+        $produk = $request->produk;
+        $amount = $request->amount;
         $method = $request->method;
-        $game =  Games::find($request->game_id);
 
         // jika ada login
         if (auth()->guard()->check()) {
@@ -48,7 +49,7 @@ class TransaksiController extends Controller
         }
 
         $tripay = new TripayController;
-        $transaksi = $tripay->requestTransaksi($method, $game, $email);
+        $transaksi = $tripay->requestTransaksi($produk, $amount, $method, $email);
 
 
         // Simpan transaksi ke db

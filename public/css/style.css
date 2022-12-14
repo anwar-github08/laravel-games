@@ -18,7 +18,8 @@ html {
 
 body {
     position: block;
-    font-family: "inter";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: whitesmoke;
     background-color: #3f6b6b;
     margin: 0 0 300px 0;
     padding: 0;
@@ -91,9 +92,10 @@ body {
 
 /* card-item */
 .card-item {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     transition: ease-in-out 0.4s;
+    text-align: center;
 }
 
 .card-item:hover {
@@ -101,15 +103,14 @@ body {
 }
 
 .card-item > button > .img-item > img {
-    width: 80px;
+    width: 80%;
     height: auto;
 }
 .card-item > button > .desc-item {
     text-align: center;
     margin-top: 10px;
     color: white;
-    font-size: 20px;
-    letter-spacing: 2px;
+    font-size: 99%;
 }
 
 .jarak {
@@ -135,7 +136,9 @@ body {
     height: 400px;
 }
 
-/* halaman game */
+/*? halaman produk */
+
+/* livewire tripay-channels */
 input[type="radio"] {
     opacity: 0;
 }
@@ -144,18 +147,25 @@ input[type="radio"]:checked + label > .card {
     border: solid 5px black;
 }
 
-input[type="radio"] label {
+label > .card {
     cursor: pointer;
+}
+
+.card > .biaya {
+    color: #2a4848;
+    font-size: 75%;
+    margin: 10px 5px 0 5px;
 }
 
 .form-floating {
     margin-top: 10px;
 }
 
-/* halaman produk */
+/* livewire show-produk */
 .nav-tabs {
-    border-bottom: solid 2px #2a4848;
+    border-bottom: solid 3px #2a4848;
 }
+
 .nav-item > a {
     color: white;
 }
@@ -164,12 +174,49 @@ input[type="radio"] label {
     color: white;
     background-color: #2a4848;
     border: solid 1px rgb(164, 204, 123);
+    border-bottom: solid 1px #2a4848;
 }
 .nav-tabs > .nav-item > .active {
     color: white;
     background-color: #2a4848;
     border: solid 1px rgb(164, 204, 123);
-    border-bottom: none;
+    border-bottom: solid 1px #2a4848;
+}
+
+/* livewire top-up */
+.card-topup {
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 0.1px solid rgb(164, 204, 123);
+
+    padding: 2rem 2rem;
+    color: white;
+    letter-spacing: 2px;
+}
+
+/* .card-topup > input {
+    background-color: #2a4848;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.card-topup > input:read-only {
+    background-color: #3c4747;
+}
+
+.card-topup > input:focus {
+    background-color: #203939;
+    color: white;
+} */
+
+/* .is-invalid {
+    border-color: rgb(231, 167, 7);
+    color: black;
+    background-color: darkgrey;
+} */
+.invalid-feedback {
+    color: goldenrod;
+    font-style: italic;
 }
 
 /* custom me */
@@ -181,6 +228,8 @@ input[type="radio"] label {
 .btn-me:hover {
     background-color: rgb(74, 105, 43);
 }
+
+/* untuk back */
 .text-me {
     color: white;
     transition: all 0.3s;
@@ -210,12 +259,12 @@ input[type="radio"] label {
         height: 30px;
     }
 
-    .card-item > a > .img-item > img {
+    /* .card-item > a > .img-item > img {
         width: 60px;
     }
     .card-item > a > .desc-item {
         font-size: 16px;
-    }
+    } */
 
     .carousel-item {
         height: 200px;

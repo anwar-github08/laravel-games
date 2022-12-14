@@ -37,7 +37,8 @@ class TripayController extends Controller
 
 
     // get detail transaksi
-    public function requestTransaksi($method, $game, $email)
+    // API ini digunakan untuk membuat transaksi baru atau melakukan generate kode pembayaran untuk jenis Open Payment
+    public function requestTransaksi($produk, $amount, $method, $email, $nomor)
     {
 
         // jika ada login
@@ -55,7 +56,7 @@ class TripayController extends Controller
         $privateKey   = env('API_PRIVATE_KEY');
         $merchantCode = env('API_MERCHANT_CODE');
         $merchantRef  = 'MR-' . time();
-        $amount       = $game->harga;
+        $amount       = $amount;
 
         $data = [
             'method'         => $method,
@@ -63,10 +64,10 @@ class TripayController extends Controller
             'amount'         => $amount,
             'customer_name'  => $customer_name,
             'customer_email' => $customer_email,
-            'customer_phone' => '-',
+            'customer_phone' => $nomor,
             'order_items'    => [
                 [
-                    'name'        => $game->judul_game,
+                    'name'        => $produk,
                     'price'       => $amount,
                     'quantity'    => 1,
                     'product_url' => 'https://tokokamu.com/product/nama-produk-1',
@@ -96,12 +97,13 @@ class TripayController extends Controller
 
         curl_close($curl);
 
-        $response = json_decode($response)->data;
+        $response = json_decode($response);
         return $response ?: $error;
     }
 
 
 
+    // API ini digunakan untuk mengambil detail transaksi open payment yang pernah dibuat
     public function detailTransaksi($reference)
     {
 
